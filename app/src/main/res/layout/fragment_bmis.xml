@@ -8,6 +8,7 @@
         <variable
             name="viewmodel"
             type="com.akash.bmicalculator2.bmis.BmisViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,12 +16,12 @@
         android:layout_height="match_parent"
         tools:context=".bmis.BmisFragment">
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"
-            app:items="@{viewmodel.items}"
+            android:background="@color/colorPrimary"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,6 +34,7 @@
             app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -16,12 +16,6 @@ class ResultViewModel(application: Application) : AndroidViewModel(application) 
 
     private val bmiRepository: BmiRepository
 
-    init {
-        val bmidao = BmiRoomDatabase.getDatabase(application.applicationContext).bmiDao()
-        bmiRepository = BmiRepository(bmidao)
-    }
-
-
     private val _saveBmiEvent = MutableLiveData<Event<Unit>>()
     val saveBmiEvent: LiveData<Event<Unit>> = _saveBmiEvent
 
@@ -30,6 +24,11 @@ class ResultViewModel(application: Application) : AndroidViewModel(application) 
 
     private val _resultCalculatedBmi = MutableLiveData<Float>()
     val resultCalculatedBmi: LiveData<Float> = _resultCalculatedBmi
+
+    init {
+        val bmidao = BmiRoomDatabase.getDatabase(application.applicationContext).bmiDao()
+        bmiRepository = BmiRepository(bmidao)
+    }
 
     fun getBmi(bmi: BMI?) {
         _resultBmi.value = bmi

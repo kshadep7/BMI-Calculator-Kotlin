@@ -7,17 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.akash.bmicalculator2.EventObserver
-import com.akash.bmicalculator2.databinding.ResultFragmentBinding
+import com.akash.bmicalculator2.databinding.FragmentResultBinding
 
 private const val TAG = "ResultFragment"
 
 class ResultFragment : Fragment() {
 
 
-    private lateinit var binding: ResultFragmentBinding
+    private lateinit var binding: FragmentResultBinding
     private val viewModel by viewModels<ResultViewModel>()
     private val safeArgs: ResultFragmentArgs by navArgs()
 
@@ -25,7 +23,7 @@ class ResultFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = ResultFragmentBinding.inflate(inflater, container, false)
+        binding = FragmentResultBinding.inflate(inflater, container, false)
         binding.viewmodel = viewModel
         return binding.root
     }
@@ -40,10 +38,12 @@ class ResultFragment : Fragment() {
     }
 
     private fun setupRecalculateBmi() {
+/*
         binding.btnRecalculate.setOnClickListener {
             val action = ResultFragmentDirections.actionResultFragmentToAddNewBmiFragment()
             findNavController().navigate(action)
         }
+*/
     }
 
     private fun setNavigationToBmiFragment() {
@@ -54,9 +54,11 @@ class ResultFragment : Fragment() {
         }
 */
 
+/*
         viewModel.saveBmiEvent.observe(viewLifecycleOwner, EventObserver {
             val action = ResultFragmentDirections.actionResultFragmentToBmisFragment()
             findNavController().navigate(action)
         })
+*/
     }
 }

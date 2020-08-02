@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.akash.bmicalculator2.MainActivity
 import com.akash.bmicalculator2.databinding.FragmentBmisBinding
@@ -16,6 +17,8 @@ private const val TAG = "BmisFragment"
 class BmisFragment : Fragment() {
 
     private val viewModel by viewModels<BmisViewModel>()
+
+    //    private lateinit var binding: FragmentBmisBinding
     private lateinit var binding: FragmentBmisBinding
 
     override fun onStart() {
@@ -28,21 +31,19 @@ class BmisFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBmisBinding.inflate(layoutInflater, container, false)
-        binding.viewmodel = viewModel
+//        binding.viewmodel = viewModel
         return binding.root
+
     }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-/*
-        viewModel.allBmis.observe(viewLifecycleOwner, Observer { listOfBmis ->
+        viewModel.items.observe(viewLifecycleOwner, Observer { listOfBmis ->
             Log.d(TAG, "onActivityCreated: List of Bmis: $listOfBmis")
         })
-*/
-        binding.lifecycleOwner = viewLifecycleOwner
+//        binding.lifecycleOwner = viewLifecycleOwner
         onFabCLick()
-        setRecyclerViewListAdapter()
     }
 
     private fun onFabCLick() {
@@ -51,17 +52,4 @@ class BmisFragment : Fragment() {
             findNavController().navigate(action)
         }
     }
-
-    private fun setRecyclerViewListAdapter() {
-
-        val viewmodel = binding.viewmodel
-        if (viewmodel != null)
-            binding.recyclerView.adapter = BmisListAdapter(viewModel)
-        else
-            Log.w(
-                TAG,
-                "setRecyclerViewListAdapter: ViewModel not initialized to set the list adapter"
-            )
-    }
-
 }
