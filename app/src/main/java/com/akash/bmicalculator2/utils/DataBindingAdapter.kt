@@ -1,10 +1,14 @@
 package com.akash.bmicalculator2.utils
 
 import android.content.Context
+import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.akash.bmicalculator2.R
+import com.akash.bmicalculator2.bmis.BmisListAdapter
+import com.akash.bmicalculator2.models.BMI
 
 @BindingAdapter("app:getShortEvaluation")
 fun getShortEvaluation(textView: TextView, bmi: Float) {
@@ -34,11 +38,27 @@ fun setBmiStateColor(textView: TextView, bmi: Float, context: Context) {
     }
 }
 
-/*
+@BindingAdapter("app:setBmiStateColor", "app:context")
+fun setBmiStateColor(view: View, bmi: Float, context: Context) {
+    when {
+        bmi <= BmiRanges.UNDERWEIGHT.value -> {
+            view.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
+        }
+        bmi <= BmiRanges.HEALTHY.value -> {
+            view.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
+        }
+        bmi <= BmiRanges.OVERWEIGHT.value -> {
+            view.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
+        }
+        else -> {
+            view.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
+        }
+    }
+}
+
 @BindingAdapter("app:items")
 fun setRecyclerViewItems(recylerView: RecyclerView, items: List<BMI>?) {
     items?.let {
         (recylerView.adapter as BmisListAdapter).submitList(items)
     }
 }
-*/

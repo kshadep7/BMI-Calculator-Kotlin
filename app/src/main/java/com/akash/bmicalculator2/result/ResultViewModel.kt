@@ -20,7 +20,7 @@ class ResultViewModel(application: Application) : AndroidViewModel(application) 
     val saveBmiEvent: LiveData<Event<Unit>> = _saveBmiEvent
 
     private val _resultBmi = MutableLiveData<BMI>()
-    val resultBmi: LiveData<BMI> = _resultBmi
+    private val resultBmi: LiveData<BMI> = _resultBmi
 
     private val _resultCalculatedBmi = MutableLiveData<Float>()
     val resultCalculatedBmi: LiveData<Float> = _resultCalculatedBmi
