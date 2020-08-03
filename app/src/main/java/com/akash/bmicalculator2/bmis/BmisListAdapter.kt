@@ -23,7 +23,6 @@ class BmiViewHolder(val binding: BmiItemBinding) :
             return BmiViewHolder(binding)
         }
     }
-
 }
 
 class BmisListAdapter(private val viewModel: BmisViewModel) :
@@ -31,13 +30,7 @@ class BmisListAdapter(private val viewModel: BmisViewModel) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BmiViewHolder {
-/*
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = BmiItemBinding.inflate(layoutInflater, parent, false)
-        return BmiViewHolder(binding)
-*/
         return BmiViewHolder.from(parent)
-
     }
 
     override fun onBindViewHolder(holder: BmiViewHolder, position: Int) {
