@@ -3,15 +3,9 @@ package com.akash.bmicalculator2.data
 import androidx.lifecycle.LiveData
 import com.akash.bmicalculator2.models.BMI
 
-class BmiRepository(private val bmiDao: BmiDao) {
+interface BmiRepository {
+    val allBmi: LiveData<List<BMI>>
 
-    val allBmi: LiveData<List<BMI>> = bmiDao.getAllBmis()
-
-    suspend fun inserBmi(bmi: BMI) {
-        bmiDao.inserBmi(bmi)
-    }
-
-    suspend fun deleteBmi(bmi: BMI) {
-        bmiDao.deleteBmi(bmi)
-    }
+    suspend fun inserBmi(bmi: BMI)
+    suspend fun deleteBmi(bmi: BMI)
 }
