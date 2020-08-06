@@ -25,7 +25,10 @@ class BmisFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        (activity as MainActivity).supportActionBar?.show()
+
+        if (activity is MainActivity) {
+            (activity as MainActivity).supportActionBar?.show()
+        }
     }
 
     override fun onCreateView(
