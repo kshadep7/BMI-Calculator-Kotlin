@@ -112,6 +112,5 @@ dependencies {
         exclude module: 'recyclerview-v7'
     }
     /** Navigatin testing **/
-    def nav_test_version = "2.3.0-alpha06"
-    androidTestImplementation "androidx.navigation:navigation-testing:$nav_test_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 }

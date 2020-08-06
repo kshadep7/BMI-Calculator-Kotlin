@@ -6,6 +6,8 @@ import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.akash.bmicalculator2.R
@@ -61,5 +63,23 @@ class BmisFragmentTest {
             navController.currentDestination?.id,
             Matchers.`is`(R.id.addNewBmiFragment)
         )
+    }
+
+    /** Testcase for RecyclerView - item longclick **/
+    @Test
+    fun testRecyclerView_longClickOnItem() {
+        Espresso.onView(ViewMatchers.withId(R.id.recyclerView))
+            .perform(
+                RecyclerViewActions
+                    .actionOnItemAtPosition<BmiViewHolder>(
+                        2,
+                        ViewActions.longClick()
+                    )
+            )
+        Espresso.onView(Matchers.allOf(ViewMatchers.withId(R.id.textView)))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+            .check(ViewAssertions.matches(ViewMatchers.withText(R.string.delete_bmi_are_you_sure)))
+        Espresso.onView(Matchers.allOf(ViewMatchers.withId(R.id.fragment_history_bottom_sheet_delete)))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 }
