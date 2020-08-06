@@ -54,7 +54,7 @@ class AddNewBmiViewModel : ViewModel() {
 
         if (checkValueOfCorrectness(currentHeight, currentWeight)) {
             bmi = createBmiInstance(currentHeight!!, currentWeight!!)
+            _calculateBmiEvent.value = Event(Unit)
         }
-        _calculateBmiEvent.value = Event(Unit)
     }
 }

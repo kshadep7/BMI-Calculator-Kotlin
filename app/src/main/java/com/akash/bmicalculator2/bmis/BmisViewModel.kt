@@ -26,7 +26,7 @@ class BmisViewModel(application: Application) : AndroidViewModel(application) {
     val items: LiveData<List<BMI>> = bmiRepositoryImpl.allBmi
 
     fun openDeleteBmiDialog(view: View, bmi: BMI): Boolean {
-        _deleteBmiDialog.value = Event(bmi)
+        _deleteBmiDialog.postValue(Event(bmi))
         return false
     }
 
