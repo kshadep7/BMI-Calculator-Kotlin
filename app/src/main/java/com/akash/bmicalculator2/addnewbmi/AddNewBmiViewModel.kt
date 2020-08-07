@@ -8,8 +8,10 @@ import com.akash.bmicalculator2.R
 import com.akash.bmicalculator2.models.BMI
 import com.akash.bmicalculator2.utils.getNowInString
 import java.util.*
+import javax.inject.Inject
 
-class AddNewBmiViewModel : ViewModel() {
+class AddNewBmiViewModel
+@Inject constructor() : ViewModel() {
 
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText
@@ -54,7 +56,7 @@ class AddNewBmiViewModel : ViewModel() {
 
         if (checkValueOfCorrectness(currentHeight, currentWeight)) {
             bmi = createBmiInstance(currentHeight!!, currentWeight!!)
+            _calculateBmiEvent.value = Event(Unit)
         }
-        _calculateBmiEvent.value = Event(Unit)
     }
 }

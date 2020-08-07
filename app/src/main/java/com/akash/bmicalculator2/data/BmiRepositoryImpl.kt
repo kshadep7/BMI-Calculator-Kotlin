@@ -2,8 +2,11 @@ package com.akash.bmicalculator2.data
 
 import androidx.lifecycle.LiveData
 import com.akash.bmicalculator2.models.BMI
+import javax.inject.Inject
 
-class BmiRepositoryImpl(private val bmiDao: BmiDao) : BmiRepository {
+class BmiRepositoryImpl
+@Inject
+constructor(private val bmiDao: BmiDao) : BmiRepository {
 
     override val allBmi: LiveData<List<BMI>> = bmiDao.getAllBmis()
 

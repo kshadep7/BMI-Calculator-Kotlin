@@ -7,21 +7,34 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.akash.bmicalculator2.EventObserver
 import com.akash.bmicalculator2.MainActivity
 import com.akash.bmicalculator2.R
 import com.akash.bmicalculator2.databinding.FragmentBmisBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 private const val TAG = "BmisFragment"
 
 class BmisFragment : Fragment() {
 
-    private val viewModel by viewModels<BmisViewModel>()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: BmisViewModel
+//    private val viewModel by viewModels<BmisViewModel>()
 
     private lateinit var binding: FragmentBmisBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        AndroidSupportInjection.inject(this)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(BmisViewModel::class.java)
+    }
 
     override fun onStart() {
         super.onStart()

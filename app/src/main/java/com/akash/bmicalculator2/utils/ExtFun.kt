@@ -13,7 +13,7 @@ import java.util.*
  * Transforms static java function Snackbar.make() to an extension function on View.
  */
 fun View.showSnackBar(snackBarText: String, snackBarLength: Int) {
-    Snackbar.make(this, snackBarText, snackBarLength)
+    Snackbar.make(this, snackBarText, snackBarLength).show()
 }
 
 /**
