@@ -5,7 +5,8 @@ AndroidX Components used in this project
 * MVVM - Live Data
 * Navigation Component and Navigation Safe Args
 * Data Binding
-* Dagger 2 (in progress)
+* Dagger 2 (in bmi_dagger2 branch)
+* Unit Testing -> Local(JUnit4) and UI(Espresso) 
 
 
 ## Preview
