@@ -12,7 +12,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ResultViewModel
-@Inject constructor(private val bmiRepositoryImpl: BmiRepositoryImpl) : ViewModel() {
+@Inject
+constructor(private val bmiRepositoryImpl: BmiRepositoryImpl) : ViewModel() {
 
 
     private val _saveBmiEvent = MutableLiveData<Event<Unit>>()

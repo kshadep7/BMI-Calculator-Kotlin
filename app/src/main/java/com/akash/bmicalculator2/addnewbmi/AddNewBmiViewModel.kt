@@ -11,7 +11,8 @@ import java.util.*
 import javax.inject.Inject
 
 class AddNewBmiViewModel
-@Inject constructor() : ViewModel() {
+@Inject
+constructor() : ViewModel() {
 
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText

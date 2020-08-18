@@ -17,10 +17,12 @@ import javax.inject.Singleton
         ViewModelModule::class]
 )
 interface AppComponent : AndroidInjector<MyApp> {
+
     @Component.Builder
-    interface Builder{
+    interface Builder {
+
         @BindsInstance
-        fun application(application: Application) : Builder
+        fun application(application: Application): Builder
 
         fun build(): AppComponent
     }

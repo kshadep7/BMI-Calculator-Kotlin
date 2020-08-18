@@ -7,13 +7,15 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class RoomDatabaseModule {
+object RoomDatabaseModule {
 
     @Singleton
     @Provides
+    @JvmStatic
     fun provideDatabase(application: Application) = BmiRoomDatabase.getDatabase(application)
 
     @Singleton
     @Provides
+    @JvmStatic
     fun provideArticleDao(bmiRoomDatabase: BmiRoomDatabase) = bmiRoomDatabase.bmiDao()
 }
