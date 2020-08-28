@@ -14,9 +14,11 @@ import com.akash.bmicalculator2.MainActivity
 import com.akash.bmicalculator2.R
 import com.akash.bmicalculator2.databinding.FragmentBmisBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "BmisFragment"
 
+@AndroidEntryPoint
 class BmisFragment : Fragment() {
 
     private val viewModel by viewModels<BmisViewModel>()

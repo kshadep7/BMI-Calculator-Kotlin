@@ -11,7 +11,9 @@ import com.akash.bmicalculator2.EventObserver
 import com.akash.bmicalculator2.databinding.FragmentAddNewBmiBinding
 import com.akash.bmicalculator2.utils.setupSnackbar
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddNewBmiFragment : Fragment() {
 
     private lateinit var binding: FragmentAddNewBmiBinding

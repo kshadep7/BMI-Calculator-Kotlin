@@ -11,11 +11,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.akash.bmicalculator2.EventObserver
 import com.akash.bmicalculator2.databinding.FragmentResultBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "ResultFragment"
 
+@AndroidEntryPoint
 class ResultFragment : Fragment() {
-
 
     private lateinit var binding: FragmentResultBinding
     private val viewModel by viewModels<ResultViewModel>()

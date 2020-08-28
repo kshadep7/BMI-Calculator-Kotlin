@@ -1,20 +1,21 @@
 package com.akash.bmicalculator2.result
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.akash.bmicalculator2.Event
 import com.akash.bmicalculator2.data.BmiRepositoryImpl
-import com.akash.bmicalculator2.data.BmiRoomDatabase
 import com.akash.bmicalculator2.models.BMI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ResultViewModel(application: Application) : AndroidViewModel(application) {
+// same as BmiViewModel
+class ResultViewModel @ViewModelInject constructor(private val bmiRepositoryImpl: BmiRepositoryImpl) :
+    ViewModel() {
 
-    private val bmiRepositoryImpl: BmiRepositoryImpl
+//    private val bmiRepositoryImpl: BmiRepositoryImpl
 
     private val _saveBmiEvent = MutableLiveData<Event<Unit>>()
     val saveBmiEvent: LiveData<Event<Unit>> = _saveBmiEvent
@@ -25,10 +26,12 @@ class ResultViewModel(application: Application) : AndroidViewModel(application) 
     private val _resultCalculatedBmi = MutableLiveData<Float>()
     val resultCalculatedBmi: LiveData<Float> = _resultCalculatedBmi
 
+/*
     init {
         val bmidao = BmiRoomDatabase.getDatabase(application.applicationContext).bmiDao()
         bmiRepositoryImpl = BmiRepositoryImpl(bmidao)
     }
+*/
 
     fun getBmi(bmi: BMI?) {
         _resultBmi.value = bmi

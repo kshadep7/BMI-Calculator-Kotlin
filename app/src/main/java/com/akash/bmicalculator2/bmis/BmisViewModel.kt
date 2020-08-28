@@ -1,27 +1,34 @@
 package com.akash.bmicalculator2.bmis
 
-import android.app.Application
 import android.view.View
-import androidx.lifecycle.AndroidViewModel
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.akash.bmicalculator2.Event
 import com.akash.bmicalculator2.data.BmiRepositoryImpl
-import com.akash.bmicalculator2.data.BmiRoomDatabase
 import com.akash.bmicalculator2.models.BMI
 import kotlinx.coroutines.launch
 
-class BmisViewModel(application: Application) : AndroidViewModel(application) {
+// for view models -> no need to use view model factory
+// we can use directly @ViewModelInject annotation
+// that does the job for us to inject
+class BmisViewModel @ViewModelInject constructor(private val bmiRepositoryImpl: BmiRepositoryImpl) :
+    ViewModel() {
 
-    private val bmiRepositoryImpl: BmiRepositoryImpl
+    // removed this as we are initializing it in constructor
+//    private val bmiRepositoryImpl: BmiRepositoryImpl
     private val _deleteBmiDialog = MutableLiveData<Event<BMI>>()
     val deleteBmiDialog: LiveData<Event<BMI>> = _deleteBmiDialog
 
+// removing this as we have the database in the hilt graph
+/*
     init {
         val bmidao = BmiRoomDatabase.getDatabase(application.applicationContext).bmiDao()
         bmiRepositoryImpl = BmiRepositoryImpl(bmidao)
     }
+*/
 
     val items: LiveData<List<BMI>> = bmiRepositoryImpl.allBmi
 
